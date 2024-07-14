@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Artists(models.Model):
+class Artist(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(blank=True, null=True)
     bio = models.TextField(null=True, blank=True, help_text="Give some info about the artist")
