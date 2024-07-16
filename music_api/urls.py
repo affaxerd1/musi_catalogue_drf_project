@@ -10,5 +10,6 @@ router.register(r'users', views.UserViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
-    path('hello_world/', views.hello_world, name="hello-world")
+    path('hello_world/', views.hello_world, name="hello-world"),
+    path('artists/', views.ArtistView.as_view(), name ="Artist")
 ]
