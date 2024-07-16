@@ -20,7 +20,7 @@ class Comment:
 
 
 class ArtistSerializer(serializers.ModelSerializer):
-    """ Automatically sets a pk field (ex : id :1"""
+    """ Automatically sets a pk field (ex : i :1"""
 
     class Meta:
         model = Artist
