@@ -8,7 +8,7 @@ from rest_framework.throttling import UserRateThrottle
 from rest_framework.views import APIView
 from .models import Artist
 from rest_framework import permissions
-from rest_framework.generics import GenericAPIView
+from rest_framework.generics import GenericAPIView, RetrieveUpdateDestroyAPIView, ListCreateAPIView
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -73,3 +73,15 @@ class ArtistDetailGenericView(mixins.RetrieveModelMixin, mixins.UpdateModelMixin
 
     def delete(self, request, *args, **kwargs):
         return self.destroy(request, *args, **kwargs)
+
+
+class ArtistView(ListCreateAPIView):
+    queryset = Artist.objects.all()
+    serializer_class = ArtistSerializer
+    permission_classes = [permissions.AllowAny]
+
+
+class ArtistDetailView(RetrieveUpdateDestroyAPIView):
+    queryset = Artist.objects.all()
+    serializer_class = ArtistSerializer
+    permission_classes = [permissions.AllowAny]
