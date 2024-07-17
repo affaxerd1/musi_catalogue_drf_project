@@ -6,7 +6,7 @@ from catalogue import views
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
-
+router.register(r'albums', views.AlbumViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),

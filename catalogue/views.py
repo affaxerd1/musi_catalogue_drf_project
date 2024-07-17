@@ -1,12 +1,12 @@
 from django.contrib.auth.models import User
 from rest_framework import viewsets, authentication, mixins
 from rest_framework import permissions
-from catalogue.serializers import UserSerializer, ArtistSerializer
+from catalogue.serializers import UserSerializer, ArtistSerializer, AlbumSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, throttle_classes
 from rest_framework.throttling import UserRateThrottle
 from rest_framework.views import APIView
-from .models import Artist
+from .models import Artist, Album
 from rest_framework import permissions
 from rest_framework.generics import GenericAPIView, RetrieveUpdateDestroyAPIView, ListCreateAPIView
 
@@ -84,4 +84,10 @@ class ArtistView(ListCreateAPIView):
 class ArtistDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Artist.objects.all()
     serializer_class = ArtistSerializer
+    permission_classes = [permissions.AllowAny]
+
+
+class AlbumViewSet(viewsets.ModelViewSet):
+    queryset = Album.objects.all()
+    serializer_class = AlbumSerializer
     permission_classes = [permissions.AllowAny]
